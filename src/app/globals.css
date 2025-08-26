@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .tap {
+    min-height: 44px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .glass {
+    backdrop-filter: saturate(180%) blur(8px);
+  }
+  
+  .ring-focus:focus-visible {
+    outline: 2px solid #229ED9;
+    outline-offset: 2px;
+  }
+  
+  .card {
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 6px 18px rgba(31, 41, 55, 0.06);
+  }
+  
+  .card:hover {
+    transform: translateY(-1px);
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .card {
+      transition: transform 0.2s ease;
+    }
+  }
+}
+
+@layer utilities {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+}
+
+/* Custom animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse {
+    animation: none;
+  }
+}
